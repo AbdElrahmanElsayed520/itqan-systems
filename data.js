@@ -1,4 +1,4 @@
-/* ملف بيانات موقع ITQAN — آخر تحديث: ٢٠‏/٩‏/٢٠٢٦، ١٠:٣٠:٠٨ م */
+/* ملف بيانات موقع ITQAN — آخر تحديث: ٢٠‏/٩‏/٢٠٢٦، ١٠:٣٢:٢٥ م */
 window.SITE = {
   "meta": {
     "title": "ITQAN — إتقان للألوميتال والـ UPVC والشتر",
@@ -233,7 +233,7 @@ window.SITE = {
         "title": "المعادي ",
         "subtitle": "UPVC - Kompen",
         "status": "done",
-        "width": "wide"
+        "width": "normal"
       },
       {
         "image": "images/img-1789930214197.jpg",
