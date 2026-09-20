@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+<title>ITQAN — إتقان للألوميتال والـ UPVC والشتر</title>
+<meta name="description" content="شركة إتقان — رائدة في تصنيع وتوريد وتركيب أنظمة الألوميتال والـ UPVC والشتر في مصر."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Cairo','sans-serif']}}}}</script>
+<style>
+*{font-family:'Cairo',sans-serif;}
+#navbar{transition:all .3s;}
+#navbar.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 1px 12px rgba(0,0,0,.08);}
+#navbar.scrolled .nl{color:#1e293b;}
+#navbar.scrolled .logo-t{color:#1e293b;}
+#navbar.scrolled .logo-s{color:#64748b;}
+#navbar.scrolled #ctabtn{background:#1e293b;color:#fff;}
+#navbar.scrolled #mbtn{color:#1e293b;}
+#mmenu{display:none;}
+#mmenu.open{display:flex;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,100%{transform:translateY(0) translateX(-50%)}50%{transform:translateY(10px) translateX(-50%)}}
+.fi{animation:fadeUp .7s ease both;}
+.fi2{animation:fadeUp .7s ease .15s both;}
+.fi3{animation:fadeUp .7s ease .3s both;}
+.fi4{animation:fadeUp .7s ease .45s both;}
+.card{transition:transform .25s,box-shadow .25s;}
+.card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,.1);}
+#sarr{animation:bounce 2s infinite;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s;}
+.reveal.vis{opacity:1;transform:none;}
+
+/* ===== LIGHTBOX ===== */
+#lb-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:16px;}
+#lb-overlay.open{display:flex;}
+#lb-overlay img{max-width:90vw;max-height:88vh;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.6);object-fit:contain;animation:lbIn .25s ease;}
+@keyframes lbIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+#lb-close{position:absolute;top:20px;left:20px;width:44px;height:44px;background:rgba(255,255,255,.15);border:none;border-radius:50%;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;}
+#lb-close:hover{background:rgba(255,255,255,.3);}
+#lb-caption{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;font-family:'Cairo',sans-serif;font-size:15px;font-weight:600;background:rgba(0,0,0,.5);padding:8px 20px;border-radius:30px;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis;}
+.lb-trigger{cursor:zoom-in;}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body class="bg-white">
+
+<!-- NAV -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-3">
+      <img id="navLogo" src="" alt="ITQAN" class="w-11 h-11 rounded-full object-cover"/>
+      <div>
+        <div id="navBrand" class="font-black text-xl tracking-widest text-white logo-t">ITQAN</div>
+        <div id="navTagline" class="text-[10px] tracking-wider text-white/70 logo-s"></div>
+      </div>
+    </a>
+    <div class="hidden md:flex items-center gap-6">
+      <a href="#home" class="nl text-sm font-bold text-white hover:text-amber-400 transition-colors">الرئيسية</a>
+      <a href="#about" class="nl text-sm font-bold text-white/80 hover:text-amber-400 transition-colors">من نحن</a>
+      <a href="#services" class="nl text-sm font-bold text-white/80 hover:text-amber-400 transition-colors">خدماتنا</a>
+      <a href="#why" class="nl text-sm font-bold text-white/80 hover:text-amber-400 transition-colors">مميزاتنا</a>
+      <a href="#gallery" class="nl text-sm font-bold text-white/80 hover:text-amber-400 transition-colors">أعمالنا</a>
+      <a href="#contact" id="ctabtn" class="flex items-center gap-2 bg-white text-slate-900 font-bold px-5 py-2.5 rounded-xl hover:bg-amber-400 hover:text-white transition-all text-sm">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.4 2 2 0 013.6 1.21h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.82a16 16 0 006.29 6.29l.96-.96a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        تواصل معنا
+      </a>
+    </div>
+    <button id="mbtn" onclick="toggleMenu()" aria-label="القائمة" class="md:hidden text-white p-2 rounded-md hover:bg-white/10">
+      <svg id="mico" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="xco" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="mmenu" class="absolute top-full left-0 right-0 bg-white shadow-xl border-t flex-col p-4 gap-1">
+    <a href="#home" onclick="closeMenu()" class="block text-right font-bold text-slate-800 hover:text-amber-500 p-3 rounded-lg hover:bg-slate-50">الرئيسية</a>
+    <a href="#about" onclick="closeMenu()" class="block text-right font-bold text-slate-800 hover:text-amber-500 p-3 rounded-lg hover:bg-slate-50">من نحن</a>
+    <a href="#services" onclick="closeMenu()" class="block text-right font-bold text-slate-800 hover:text-amber-500 p-3 rounded-lg hover:bg-slate-50">خدماتنا</a>
+    <a href="#why" onclick="closeMenu()" class="block text-right font-bold text-slate-800 hover:text-amber-500 p-3 rounded-lg hover:bg-slate-50">مميزاتنا</a>
+    <a href="#gallery" onclick="closeMenu()" class="block text-right font-bold text-slate-800 hover:text-amber-500 p-3 rounded-lg hover:bg-slate-50">أعمالنا</a>
+    <a href="#contact" onclick="closeMenu()" class="block w-full text-center bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-amber-500 transition-colors mt-2">📞 تواصل معنا الآن</a>
+  </div>
+</nav>
+
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden"></section>
+<section id="about" class="py-20 bg-white"></section>
+<section id="services" class="py-20 bg-slate-50"></section>
+<section id="why" class="py-20 bg-slate-900 relative overflow-hidden"></section>
+<section id="gallery" class="py-20 bg-white"></section>
+<section id="contact" class="py-20 bg-slate-50"></section>
+<footer id="siteFooter" class="bg-slate-900 text-white pt-16 pb-8 border-t border-white/10"></footer>
+
+<a id="floatWa" href="#" target="_blank" aria-label="واتس آب" class="fixed bottom-6 left-5 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" style="box-shadow:0 4px 20px rgba(37,211,102,.5)">
+  <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div id="lb-overlay" role="dialog" aria-modal="true">
+  <button id="lb-close" aria-label="إغلاق">✕</button>
+  <img id="lb-img" src="" alt=""/>
+  <div id="lb-caption"></div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  var S = window.SITE;
+  if(!S){ document.body.innerHTML='<p style="padding:40px;font-family:sans-serif">لم يتم تحميل ملف البيانات data.js — تأكد أنه مرفوع بجوار index.html.</p>'; return; }
+
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function nl2br(s){ return esc(s).replace(/\n/g,'<br/>'); }
+  function hl(text, word){
+    if(!word) return esc(text);
+    var t = esc(text), w = esc(word);
+    return t.replace(w, '<span class="text-amber-400">'+w+'</span>');
+  }
+  var waLink = 'https://wa.me/'+S.contact.whatsapp;
+
+  /* ---------- HEAD ---------- */
+  document.title = S.meta.title;
+  var md = document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', S.meta.description);
+  document.getElementById('navLogo').src = S.meta.logo;
+  document.getElementById('navBrand').textContent = S.meta.brandName;
+  document.getElementById('navTagline').textContent = S.meta.brandTagline;
+  document.getElementById('floatWa').href = waLink;
+
+  /* ---------- HERO ---------- */
+  document.getElementById('home').innerHTML =
+  '<div class="absolute inset-0 z-0">'+
+    '<img class="w-full h-full object-cover" src="'+esc(S.hero.image)+'" alt="'+esc(S.meta.brandName)+'"/>'+
+    '<div class="absolute inset-0 bg-gradient-to-b from-slate-900/85 via-slate-800/65 to-slate-900/50"></div>'+
+  '</div>'+
+  '<div class="relative z-10 max-w-3xl mx-auto px-4 text-center pt-24 pb-8">'+
+    '<div class="fi"><span class="inline-block py-1.5 px-5 rounded-full bg-amber-400/20 border border-amber-400/50 text-amber-400 font-semibold text-sm mb-6">'+esc(S.hero.badge)+'</span></div>'+
+    '<h1 class="fi2 text-4xl md:text-6xl font-black text-white leading-tight mb-6">'+hl(S.hero.titleLine1, S.hero.highlight)+'<br/>'+esc(S.hero.titleLine2)+'</h1>'+
+    '<p class="fi3 text-lg text-gray-200 mb-10 leading-relaxed max-w-2xl mx-auto">'+nl2br(S.hero.subtitle)+'</p>'+
+    '<div class="fi4 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">'+
+      '<a href="#services" class="w-full sm:w-auto bg-amber-400 text-slate-900 font-bold h-14 px-8 text-lg rounded-xl hover:bg-amber-500 transition-colors flex items-center justify-center">'+esc(S.hero.btnPrimary)+'</a>'+
+      '<a href="#gallery" class="w-full sm:w-auto bg-white/10 text-white border border-white/25 font-bold h-14 px-8 text-lg rounded-xl hover:bg-white/20 transition-colors backdrop-blur-sm flex items-center justify-center">'+esc(S.hero.btnSecondary)+'</a>'+
+    '</div>'+
+    '<div class="grid grid-cols-1 md:grid-cols-3 gap-4 fi4">'+
+      S.hero.cards.map(function(c){ return '<div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-6 text-white text-center">'+
+        '<div class="w-12 h-12 bg-amber-400/20 rounded-full flex items-center justify-center mb-3 text-amber-400 mx-auto text-2xl">'+esc(c.icon)+'</div>'+
+        '<h3 class="font-bold text-base mb-1">'+esc(c.title)+'</h3>'+
+        '<p class="text-xs text-gray-300">'+esc(c.text)+'</p></div>'; }).join('')+
+    '</div>'+
+  '</div>'+
+  '<button id="sarr" onclick="document.getElementById(\'about\').scrollIntoView({behavior:\'smooth\'})" aria-label="للأسفل" class="absolute bottom-8 left-1/2 text-white/50 hover:text-white z-20" style="transform:translateX(-50%)">'+
+    '<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>';
+
+  /* ---------- ABOUT ---------- */
+  var statStyles = {
+    dark:  ['bg-slate-900 text-white','text-amber-400','text-gray-300'],
+    amber: ['bg-amber-400','text-slate-900','text-slate-800'],
+    light: ['bg-slate-100','text-slate-900','text-slate-600']
+  };
+  var check = '<svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+  document.getElementById('about').innerHTML =
+  '<div class="max-w-7xl mx-auto px-4 md:px-8">'+
+    '<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">'+
+      '<div class="reveal">'+
+        '<span class="inline-block py-1 px-4 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-600 text-sm font-bold mb-5">'+esc(S.about.badge)+'</span>'+
+        '<h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-6 leading-tight">'+esc(S.about.titleLine1)+'<br/><span class="text-amber-500">'+esc(S.about.titleLine2)+'</span></h2>'+
+        S.about.paragraphs.map(function(p){ return '<p class="text-slate-600 text-base leading-relaxed mb-4">'+esc(p)+'</p>'; }).join('')+
+        '<div class="space-y-3 mt-8">'+S.about.bullets.map(function(b){ return '<div class="flex items-center gap-3">'+check+'<span class="font-semibold text-slate-800">'+esc(b)+'</span></div>'; }).join('')+'</div>'+
+      '</div>'+
+      '<div class="reveal"><img class="w-full rounded-2xl shadow-lg object-cover" loading="lazy" src="'+esc(S.about.image)+'" alt="أعمال '+esc(S.meta.brandName)+'"/></div>'+
+    '</div>'+
+    '<div class="grid grid-cols-2 md:grid-cols-4 gap-6 reveal">'+
+      S.about.stats.map(function(s){ var st = statStyles[s.style]||statStyles.light;
+        return '<div class="'+st[0]+' rounded-2xl p-6 text-center"><div class="text-4xl font-black '+st[1]+' mb-2">'+esc(s.value)+'</div><div class="text-sm '+st[2]+' font-medium">'+esc(s.label)+'</div></div>'; }).join('')+
+    '</div>'+
+    '<div class="mt-16 reveal">'+
+      '<span class="inline-block py-1 px-4 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-sm font-bold mb-5">'+esc(S.about.achievementsBadge)+'</span>'+
+      '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">'+
+        S.about.achievements.map(function(a){ return '<div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4 border border-slate-100"><span class="text-amber-500 text-xl mt-0.5">'+esc(a.icon)+'</span><p class="text-sm text-slate-700 font-medium leading-relaxed">'+a.text+'</p></div>'; }).join('')+
+      '</div>'+
+    '</div>'+
+  '</div>';
+
+  /* ---------- SERVICES ---------- */
+  function srvCard(s, big){
+    return '<div class="card bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 reveal">'+
+      '<div class="'+(big?'h-56':'h-44')+' overflow-hidden"><img class="w-full h-full object-cover" loading="lazy" src="'+esc(s.image)+'" alt="'+esc(s.title)+'"/></div>'+
+      '<div class="'+(big?'p-7':'p-6')+'">'+
+        '<h3 class="'+(big?'text-xl':'text-lg')+' font-black text-slate-900 mb-3">'+esc(s.title)+'</h3>'+
+        '<p class="text-slate-500 text-sm leading-relaxed mb-4">'+esc(s.text)+'</p>'+
+        '<div class="'+(big?'grid grid-cols-2 gap-2':'space-y-1')+' text-xs text-slate-600">'+
+          s.features.map(function(f){ return '<div class="flex items-start gap-1.5"><span class="text-amber-500">✓</span> '+esc(f)+'</div>'; }).join('')+
+        '</div>'+
+      '</div></div>';
+  }
+  var big = S.services.items.filter(function(s){ return s.size==='large'; });
+  var small = S.services.items.filter(function(s){ return s.size!=='large'; });
+  document.getElementById('services').innerHTML =
+  '<div class="max-w-7xl mx-auto px-4 md:px-8">'+
+    '<div class="text-center mb-14 reveal">'+
+      '<span class="inline-block py-1 px-4 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-600 text-sm font-bold mb-4">'+esc(S.services.badge)+'</span>'+
+      '<h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">'+esc(S.services.titleLine1)+'<br/>'+esc(S.services.titleLine2)+'</h2>'+
+      '<p class="text-slate-500 max-w-xl mx-auto">'+esc(S.services.subtitle)+'</p>'+
+    '</div>'+
+    (big.length? '<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">'+big.map(function(s){return srvCard(s,true);}).join('')+'</div>' : '')+
+    (small.length? '<div class="grid grid-cols-1 md:grid-cols-3 gap-8">'+small.map(function(s){return srvCard(s,false);}).join('')+'</div>' : '')+
+  '</div>';
+
+  /* ---------- WHY ---------- */
+  document.getElementById('why').innerHTML =
+  '<div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 1px,transparent 12px)"></div>'+
+  '<div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">'+
+    '<div class="text-center mb-14 reveal">'+
+      '<span class="inline-block py-1 px-4 rounded-full border border-amber-400/40 text-amber-400 text-sm font-bold mb-4">'+esc(S.why.badge)+'</span>'+
+      '<h2 class="text-3xl md:text-4xl font-black text-white mb-4">'+esc(S.why.title)+'</h2>'+
+      '<p class="text-gray-400 max-w-xl mx-auto">'+esc(S.why.subtitle)+'</p>'+
+    '</div>'+
+    '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">'+
+      S.why.items.map(function(i){
+        return i.highlight
+        ? '<div class="bg-amber-400 rounded-2xl p-7 reveal"><div class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center mb-5 text-2xl">'+esc(i.icon)+'</div><h3 class="text-slate-900 font-bold text-lg mb-3">'+esc(i.title)+'</h3><p class="text-slate-800 text-sm leading-relaxed">'+esc(i.text)+'</p></div>'
+        : '<div class="bg-slate-800 rounded-2xl p-7 border border-white/5 reveal"><div class="w-12 h-12 bg-amber-400 rounded-xl flex items-center justify-center mb-5 text-2xl">'+esc(i.icon)+'</div><h3 class="text-white font-bold text-lg mb-3">'+esc(i.title)+'</h3><p class="text-gray-400 text-sm leading-relaxed">'+esc(i.text)+'</p></div>';
+      }).join('')+
+    '</div>'+
+  '</div>';
+
+  /* ---------- GALLERY ---------- */
+  var widthCls = { normal:'', wide:'lg:col-span-2', full:'lg:col-span-3' };
+  document.getElementById('gallery').innerHTML =
+  '<div class="max-w-7xl mx-auto px-4 md:px-8">'+
+    '<div class="text-center mb-14 reveal">'+
+      '<span class="inline-block py-1 px-4 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-600 text-sm font-bold mb-4">'+esc(S.gallery.badge)+'</span>'+
+      '<h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">'+esc(S.gallery.title)+'</h2>'+
+      '<p class="text-slate-500 max-w-xl mx-auto">'+esc(S.gallery.subtitle)+'</p>'+
+    '</div>'+
+    '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">'+
+      S.gallery.projects.map(function(p){
+        var w = widthCls[p.width]||'';
+        var h = (p.width==='normal') ? 'h-64' : 'h-72';
+        var badge = p.status==='progress'
+          ? '<span class="bg-amber-400 text-slate-900 text-xs font-black px-3 py-1.5 rounded-full">🚧 جاري التنفيذ</span>'
+          : '<span class="bg-emerald-500 text-white text-xs font-black px-3 py-1.5 rounded-full">✅ تم التنفيذ</span>';
+        return '<div class="'+w+' card rounded-2xl overflow-hidden shadow-sm reveal relative"><div class="relative">'+
+          '<img src="'+esc(p.image)+'" loading="lazy" class="w-full '+h+' object-cover" alt="'+esc(p.title)+' — '+esc(p.subtitle)+'">'+
+          '<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>'+
+          '<div class="absolute top-4 right-4">'+badge+'</div>'+
+          '<div class="absolute bottom-4 right-4 text-white">'+
+            '<p class="font-black text-base md:text-lg">'+esc(p.title)+'</p>'+
+            '<p class="text-xs md:text-sm text-white/80">'+esc(p.subtitle)+'</p>'+
+          '</div></div></div>';
+      }).join('')+
+    '</div>'+
+    '<div class="text-center mt-10 reveal"><a href="#contact" class="inline-flex items-center gap-2 bg-slate-900 text-white font-bold px-8 py-3.5 rounded-xl hover:bg-amber-500 transition-colors">'+esc(S.gallery.ctaText)+'</a></div>'+
+  '</div>';
+
+  /* ---------- CONTACT ---------- */
+  var C = S.contact, CS = S.contactSection;
+  function infoCard(bg, icon, title, body){
+    return '<div class="bg-white rounded-2xl p-5 flex items-center gap-4 shadow-sm border border-slate-100">'+
+      '<div class="w-12 h-12 '+bg+' rounded-xl flex items-center justify-center text-xl flex-shrink-0">'+icon+'</div>'+
+      '<div><div class="font-bold text-slate-900 mb-1">'+esc(title)+'</div>'+body+'</div></div>';
+  }
+  document.getElementById('contact').innerHTML =
+  '<div class="max-w-7xl mx-auto px-4 md:px-8">'+
+    '<div class="text-center mb-14 reveal">'+
+      '<span class="inline-block py-1 px-4 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-600 text-sm font-bold mb-4">'+esc(CS.badge)+'</span>'+
+      '<h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">'+esc(CS.title)+'</h2>'+
+      '<p class="text-slate-500">'+esc(CS.subtitle)+'</p>'+
+    '</div>'+
+    '<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">'+
+      '<div class="space-y-5 reveal">'+
+        infoCard('bg-amber-400','📍','المقر الرئيسي','<div class="text-slate-500 text-sm">'+esc(C.address)+'</div>')+
+        infoCard('bg-amber-400','📞','أرقام الهواتف', C.phones.map(function(p){ return '<a href="tel:'+esc(p)+'" class="text-slate-600 text-sm block hover:text-amber-500" dir="ltr">'+esc(p)+'</a>'; }).join(''))+
+        infoCard('bg-green-500','💬','واتس آب','<a href="'+waLink+'" class="text-slate-600 text-sm block hover:text-amber-500" dir="ltr">'+esc(C.whatsappDisplay)+'</a>')+
+        infoCard('bg-amber-400','✉️','البريد الإلكتروني','<a href="mailto:'+esc(C.email)+'" class="text-slate-600 text-sm hover:text-amber-500">'+esc(C.email)+'</a>')+
+        infoCard('bg-amber-400','🕐','ساعات العمل','<div class="text-slate-600 text-sm">'+esc(C.hoursDays)+': '+esc(C.hoursTime)+'</div><div class="text-amber-500 text-sm">'+esc(C.hoursClosedDay)+': '+esc(C.hoursClosedText)+'</div>')+
+        '<a href="'+waLink+'?text='+encodeURIComponent('مرحباً '+S.meta.brandName+'، أريد الاستفسار عن خدماتكم')+'" target="_blank" class="flex items-center justify-center gap-3 bg-green-500 text-white font-bold py-4 rounded-xl hover:bg-green-600 transition-colors text-lg w-full">'+esc(CS.whatsappButton)+' 💬</a>'+
+      '</div>'+
+      '<div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 reveal">'+
+        '<h3 class="text-xl font-black text-slate-900 mb-6">'+esc(CS.formTitle)+'</h3>'+
+        '<div class="space-y-4">'+
+          '<div><label for="fn" class="block text-sm font-semibold text-slate-700 mb-2">الاسم الكريم</label><input id="fn" type="text" placeholder="أدخل اسمك" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-amber-400 transition-colors" dir="rtl"/></div>'+
+          '<div><label for="fp" class="block text-sm font-semibold text-slate-700 mb-2">رقم الهاتف</label><input id="fp" type="tel" placeholder="أدخل رقم هاتفك" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-amber-400 transition-colors" dir="ltr"/></div>'+
+          '<div><label for="fs" class="block text-sm font-semibold text-slate-700 mb-2">نوع الخدمة</label><select id="fs" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-amber-400 transition-colors" dir="rtl"><option value="">اختر نوع الخدمة</option>'+CS.serviceOptions.map(function(o){ return '<option>'+esc(o)+'</option>'; }).join('')+'</select></div>'+
+          '<div><label for="fm" class="block text-sm font-semibold text-slate-700 mb-2">تفاصيل المشروع (اختياري)</label><textarea id="fm" placeholder="اكتب تفاصيل مشروعك هنا..." rows="4" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-amber-400 transition-colors resize-none" dir="rtl"></textarea></div>'+
+          '<button onclick="sendWA()" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-amber-500 transition-colors text-base">'+esc(CS.formButton)+'</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+  '</div>';
+
+  /* ---------- FOOTER ---------- */
+  document.getElementById('siteFooter').innerHTML =
+  '<div class="max-w-7xl mx-auto px-4 md:px-8">'+
+    '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">'+
+      '<div><div class="flex items-center gap-3 mb-5"><img src="'+esc(S.meta.logo)+'" alt="'+esc(S.meta.brandName)+'" class="w-12 h-12 rounded-full object-cover"/>'+
+        '<div><div class="font-black text-xl tracking-widest">'+esc(S.meta.brandName)+'</div><div class="text-[10px] tracking-wider text-white/60">'+esc(S.meta.brandTagline)+'</div></div></div>'+
+        '<p class="text-gray-400 text-sm leading-relaxed">'+esc(S.footer.about)+'</p></div>'+
+      '<div><h4 class="text-base font-bold mb-5">روابط سريعة</h4><ul class="space-y-3 text-sm text-gray-400">'+
+        '<li><a href="#home" class="hover:text-amber-400 transition-colors">الرئيسية</a></li>'+
+        '<li><a href="#about" class="hover:text-amber-400 transition-colors">من نحن</a></li>'+
+        '<li><a href="#services" class="hover:text-amber-400 transition-colors">خدماتنا</a></li>'+
+        '<li><a href="#why" class="hover:text-amber-400 transition-colors">مميزاتنا</a></li>'+
+        '<li><a href="#gallery" class="hover:text-amber-400 transition-colors">معرض الأعمال</a></li></ul></div>'+
+      '<div><h4 class="text-base font-bold mb-5">خدماتنا</h4><ul class="space-y-3 text-sm text-gray-400">'+S.footer.servicesList.map(function(s){ return '<li>'+esc(s)+'</li>'; }).join('')+'</ul></div>'+
+      '<div><h4 class="text-base font-bold mb-5">ساعات العمل</h4><ul class="space-y-3 text-sm">'+
+        '<li class="flex justify-between border-b border-white/10 pb-3"><span class="text-gray-400">'+esc(C.hoursDays)+'</span><span class="text-white font-medium">'+esc(C.hoursTime)+'</span></li>'+
+        '<li class="flex justify-between pt-1"><span class="text-gray-400">'+esc(C.hoursClosedDay)+'</span><span class="text-amber-400 font-medium">'+esc(C.hoursClosedText)+'</span></li></ul>'+
+        '<div class="mt-6 space-y-2 text-sm text-gray-400">'+C.phones.map(function(p){ return '<a href="tel:'+esc(p)+'" class="block hover:text-amber-400" dir="ltr">📞 '+esc(p)+'</a>'; }).join('')+
+        '<a href="mailto:'+esc(C.email)+'" class="block hover:text-amber-400">✉️ '+esc(C.email)+'</a></div></div>'+
+    '</div>'+
+    '<div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">'+
+      '<p class="text-sm text-gray-500">© '+new Date().getFullYear()+' '+esc(S.footer.copyright)+'</p></div>'+
+  '</div>';
+
+  /* ---------- BEHAVIOUR ---------- */
+  window.addEventListener('scroll', function(){
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>20);
+  });
+
+  var mopen=false;
+  window.toggleMenu=function(){
+    mopen=!mopen;
+    document.getElementById('mmenu').classList.toggle('open',mopen);
+    document.getElementById('mico').classList.toggle('hidden',mopen);
+    document.getElementById('xco').classList.toggle('hidden',!mopen);
+  };
+  window.closeMenu=function(){ mopen=false;
+    document.getElementById('mmenu').classList.remove('open');
+    document.getElementById('mico').classList.remove('hidden');
+    document.getElementById('xco').classList.add('hidden'); };
+
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e,i){ if(e.isIntersecting) setTimeout(function(){ e.target.classList.add('vis'); }, i*80); });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+
+  window.sendWA=function(){
+    var n=document.getElementById('fn').value||'عميل';
+    var p=document.getElementById('fp').value||'—';
+    var s=document.getElementById('fs').value||'—';
+    var m=document.getElementById('fm').value||'';
+    var msg=encodeURIComponent('مرحباً '+S.meta.brandName+'،\n\nاسمي: '+n+'\nهاتف: '+p+'\nالخدمة: '+s+(m?'\nتفاصيل: '+m:'')+'\n\nأرجو التواصل معي. شكراً');
+    window.open(waLink+'?text='+msg,'_blank');
+  };
+
+  /* ---------- LIGHTBOX ---------- */
+  var gallery=document.getElementById('gallery'),
+      overlay=document.getElementById('lb-overlay'),
+      lbImg=document.getElementById('lb-img'),
+      lbCap=document.getElementById('lb-caption'),
+      lbClose=document.getElementById('lb-close');
+  gallery.querySelectorAll('img').forEach(function(img){
+    img.classList.add('lb-trigger');
+    img.setAttribute('title','انقر للتكبير');
+    img.addEventListener('click', function(e){
+      e.stopPropagation();
+      lbImg.src=img.src;
+      var card=img.closest('.card');
+      var t=card?card.querySelector('p.font-black'):null;
+      lbCap.textContent=t?t.textContent.trim():'';
+      overlay.classList.add('open');
+      document.body.style.overflow='hidden';
+    });
+  });
+  function closeLb(){ overlay.classList.remove('open'); document.body.style.overflow=''; lbImg.src=''; }
+  lbClose.addEventListener('click', closeLb);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) closeLb(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb(); });
+})();
+</script>
+</body>
+</html>
