@@ -1,4 +1,4 @@
-/* ملف بيانات موقع ITQAN — آخر تحديث: ٢٠‏/٩‏/٢٠٢٦، ١٠:٠٣:٥٩ م */
+/* ملف بيانات موقع ITQAN — آخر تحديث: ٢٠‏/٩‏/٢٠٢٦، ١٠:٠٥:٥٢ م */
 window.SITE = {
   "meta": {
     "title": "ITQAN — إتقان للألوميتال والـ UPVC والشتر",
@@ -229,9 +229,9 @@ window.SITE = {
     "ctaText": "اطلب عرض سعر لمشروعك",
     "projects": [
       {
-        "image": "images/img-1789930993548.jpg",
+        "image": "images/img-1789931132418.jpg",
         "title": "المعادي",
-        "subtitle": "بلكونة UPVC قطاع Kompen",
+        "subtitle": "UPVC",
         "status": "done",
         "width": "normal"
       },
@@ -247,7 +247,7 @@ window.SITE = {
         "title": "مصنع موسى للكابات",
         "subtitle": "واجهة ألوميتال وزجاج — المنطقة الصناعية، العاشر من رمضان",
         "status": "done",
-        "width": "full"
+        "width": "wide"
       },
       {
         "image": "images/project-02.webp",
