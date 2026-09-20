@@ -1,4 +1,4 @@
-/* ملف بيانات موقع ITQAN — آخر تحديث: ٢٠‏/٩‏/٢٠٢٦، ١٠:١٨:١١ م */
+/* ملف بيانات موقع ITQAN — آخر تحديث: ٢٠‏/٩‏/٢٠٢٦، ١٠:٢١:٤١ م */
 window.SITE = {
   "meta": {
     "title": "ITQAN — إتقان للألوميتال والـ UPVC والشتر",
@@ -76,7 +76,7 @@ window.SITE = {
         "style": "amber"
       },
       {
-        "value": "30+",
+        "value": "35+",
         "label": "سنة في السوق",
         "style": "light"
       },
@@ -228,20 +228,6 @@ window.SITE = {
     "subtitle": "مشاريع حقيقية نفتخر بتنفيذها — من فروع بنك ABC إلى الفيلات والمجمعات السكنية والتجارية.",
     "ctaText": "اطلب عرض سعر لمشروعك",
     "projects": [
-      {
-        "image": "images/img-1789931237718.jpg",
-        "title": "المعادي ",
-        "subtitle": "UPVC - Kompen",
-        "status": "done",
-        "width": "normal"
-      },
-      {
-        "image": "images/img-1789930214197.jpg",
-        "title": "المقطم",
-        "subtitle": "شباك UPVC قطاع Kompen",
-        "status": "done",
-        "width": "normal"
-      },
       {
         "image": "images/project-01.webp",
         "title": "مصنع موسى للكابات",
