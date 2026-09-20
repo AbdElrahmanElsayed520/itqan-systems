@@ -1,10 +1,5 @@
-/* ==========================================================
-   ملف بيانات موقع ITQAN
-   كل النصوص والصور والأرقام موجودة هنا.
-   عدّل من لوحة التحكم (admin.html) أو من هنا مباشرة.
-   ========================================================== */
+/* ملف بيانات موقع ITQAN — آخر تحديث: ٢٠‏/٩‏/٢٠٢٦، ٩:٥٠:١٩ م */
 window.SITE = {
-
   "meta": {
     "title": "ITQAN — إتقان للألوميتال والـ UPVC والشتر",
     "description": "شركة إتقان — رائدة في تصنيع وتوريد وتركيب أنظمة الألوميتال والـ UPVC والشتر في مصر.",
@@ -12,10 +7,12 @@ window.SITE = {
     "brandTagline": "للألوميتال والـ UPVC والشتر",
     "logo": "images/logo.webp"
   },
-
   "contact": {
     "address": "المنطقة الصناعية بجوار الطريق الدائري — التقسيم الرابع",
-    "phones": ["01005036557", "01063167914"],
+    "phones": [
+      "01005036557",
+      "01063167914"
+    ],
     "whatsapp": "201113795075",
     "whatsappDisplay": "01113795075",
     "email": "itqan2957@gmail.com",
@@ -24,7 +21,6 @@ window.SITE = {
     "hoursClosedDay": "الجمعة",
     "hoursClosedText": "مغلق"
   },
-
   "hero": {
     "image": "images/hero.jpg",
     "badge": "الرواد في صناعة الألوميتال والـ UPVC في مصر",
@@ -35,12 +31,23 @@ window.SITE = {
     "btnPrimary": "اكتشف خدماتنا",
     "btnSecondary": "شاهد سابقة أعمالنا",
     "cards": [
-      { "icon": "🛡️", "title": "ضمان شامل طويل الأمد", "text": "نثق في جودة منتجاتنا ونضمنها لك." },
-      { "icon": "📐", "title": "دقة متناهية في التنفيذ", "text": "مقاسات دقيقة وعناية بكل تفصيلة." },
-      { "icon": "⏰", "title": "التزام تام بالمواعيد", "text": "نسلم مشاريعنا في الموعد المحدد دائماً." }
+      {
+        "icon": "🛡️",
+        "title": "ضمان شامل طويل الأمد",
+        "text": "نثق في جودة منتجاتنا ونضمنها لك."
+      },
+      {
+        "icon": "📐",
+        "title": "دقة متناهية في التنفيذ",
+        "text": "مقاسات دقيقة وعناية بكل تفصيلة."
+      },
+      {
+        "icon": "⏰",
+        "title": "التزام تام بالمواعيد",
+        "text": "نسلم مشاريعنا في الموعد المحدد دائماً."
+      }
     ]
   },
-
   "about": {
     "badge": "من نحن",
     "titleLine1": "خبرة هندسية تبني",
@@ -58,22 +65,55 @@ window.SITE = {
       "تعاون مع شركات مقاولات كبرى ومكاتب استشاريين"
     ],
     "stats": [
-      { "value": "500+", "label": "مشروع منجز", "style": "dark" },
-      { "value": "ضمان", "label": "طويل الأمد", "style": "amber" },
-      { "value": "30+", "label": "سنة في السوق", "style": "light" },
-      { "value": "100%", "label": "رضا العملاء", "style": "dark" }
+      {
+        "value": "500+",
+        "label": "مشروع منجز",
+        "style": "dark"
+      },
+      {
+        "value": "ضمان",
+        "label": "طويل الأمد",
+        "style": "amber"
+      },
+      {
+        "value": "30+",
+        "label": "سنة في السوق",
+        "style": "light"
+      },
+      {
+        "value": "100%",
+        "label": "رضا العملاء",
+        "style": "dark"
+      }
     ],
     "achievementsBadge": "خبراتنا وإنجازاتنا",
     "achievements": [
-      { "icon": "🏗️", "text": "نفذنا <strong>مئات المشاريع في جميع أنحاء مصر</strong>، من العاصمة إلى المحافظات" },
-      { "icon": "🏢", "text": "خبرة قوية في تنفيذ واجهات <strong>Curtain Wall — Structural Glazing</strong>" },
-      { "icon": "🏦", "text": "شريك تنفيذ موثوق <strong>لمؤسسات مصرفية وشركات كبرى</strong>" },
-      { "icon": "🤝", "text": "تعاون مع <strong>شركات مقاولات كبرى ومكاتب استشاريين</strong>" },
-      { "icon": "👷", "text": "<strong>فريق مدرّب على أعلى مستوى</strong> من المهندسين والفنيين المتخصصين" },
-      { "icon": "✅", "text": "التزام كامل باستخدام <strong>خامات معتمدة</strong> في جميع مراحل التصنيع والتركيب" }
+      {
+        "icon": "🏗️",
+        "text": "نفذنا <strong>مئات المشاريع في جميع أنحاء مصر</strong>، من العاصمة إلى المحافظات"
+      },
+      {
+        "icon": "🏢",
+        "text": "خبرة قوية في تنفيذ واجهات <strong>Curtain Wall — Structural Glazing</strong>"
+      },
+      {
+        "icon": "🏦",
+        "text": "شريك تنفيذ موثوق <strong>لمؤسسات مصرفية وشركات كبرى</strong>"
+      },
+      {
+        "icon": "🤝",
+        "text": "تعاون مع <strong>شركات مقاولات كبرى ومكاتب استشاريين</strong>"
+      },
+      {
+        "icon": "👷",
+        "text": "<strong>فريق مدرّب على أعلى مستوى</strong> من المهندسين والفنيين المتخصصين"
+      },
+      {
+        "icon": "✅",
+        "text": "التزام كامل باستخدام <strong>خامات معتمدة</strong> في جميع مراحل التصنيع والتركيب"
+      }
     ]
   },
-
   "services": {
     "badge": "خدماتنا",
     "titleLine1": "حلول متكاملة من التصنيع",
@@ -139,50 +179,204 @@ window.SITE = {
       }
     ]
   },
-
   "why": {
     "badge": "لماذا تختار ITQAN؟",
     "title": "معايير تصنع الفارق",
     "subtitle": "نحن لا نقدم مجرد خدمة، بل نقدم راحة بال. كل تفصيلة في عملنا مصممة لتوفير أقصى درجات الرضا لعملائنا.",
     "items": [
-      { "icon": "🛡️", "title": "ضمان شامل طويل الأمد", "text": "نثق في جودة منتجاتنا ونضمنها لك لفترة طويلة. ضمان حقيقي على القطاعات والميكانيزم يمتد لسنوات.", "highlight": false },
-      { "icon": "📐", "title": "دقة متناهية في التنفيذ", "text": "تصميمات مخصصة بمقاسات دقيقة وعناية بالتفاصيل. قياس دقيق في الموقع قبل أي تصنيع.", "highlight": false },
-      { "icon": "⏰", "title": "التزام تام بالمواعيد", "text": "نحترم وقتك ونسلم المشاريع في موعدها المحدد. هذا ما أكسبنا ثقة كبرى الشركات والمؤسسات.", "highlight": false },
-      { "icon": "🏆", "title": "خامات معتمدة أصلية", "text": "قطاعات السلام — شريف علي حسن — دهانات الدولية الإلكتروستاتيك — إكسسوارات تركية وأوروبية أصلية.", "highlight": false },
-      { "icon": "👥", "title": "خدمة ما بعد البيع", "text": "علاقتنا لا تنتهي بالتركيب. نوفر صيانة دورية واستجابة سريعة لأي استفسار أو طلب بعد التسليم.", "highlight": false },
-      { "icon": "🏦", "title": "ثقة المؤسسات الكبرى", "text": "المسؤولون عن تنفيذ أعمال الألوميتال والواجهات لدى بنك المؤسسة العربية المصرفية (Bank ABC) في عدد من فروعه، وشريك معتمد لكبرى شركات المقاولات ومكاتب الاستشاريين.", "highlight": true }
+      {
+        "icon": "🛡️",
+        "title": "ضمان شامل طويل الأمد",
+        "text": "نثق في جودة منتجاتنا ونضمنها لك لفترة طويلة. ضمان حقيقي على القطاعات والميكانيزم يمتد لسنوات.",
+        "highlight": false
+      },
+      {
+        "icon": "📐",
+        "title": "دقة متناهية في التنفيذ",
+        "text": "تصميمات مخصصة بمقاسات دقيقة وعناية بالتفاصيل. قياس دقيق في الموقع قبل أي تصنيع.",
+        "highlight": false
+      },
+      {
+        "icon": "⏰",
+        "title": "التزام تام بالمواعيد",
+        "text": "نحترم وقتك ونسلم المشاريع في موعدها المحدد. هذا ما أكسبنا ثقة كبرى الشركات والمؤسسات.",
+        "highlight": false
+      },
+      {
+        "icon": "🏆",
+        "title": "خامات معتمدة أصلية",
+        "text": "قطاعات السلام — شريف علي حسن — دهانات الدولية الإلكتروستاتيك — إكسسوارات تركية وأوروبية أصلية.",
+        "highlight": false
+      },
+      {
+        "icon": "👥",
+        "title": "خدمة ما بعد البيع",
+        "text": "علاقتنا لا تنتهي بالتركيب. نوفر صيانة دورية واستجابة سريعة لأي استفسار أو طلب بعد التسليم.",
+        "highlight": false
+      },
+      {
+        "icon": "🏦",
+        "title": "ثقة المؤسسات الكبرى",
+        "text": "المسؤولون عن تنفيذ أعمال الألوميتال والواجهات لدى بنك المؤسسة العربية المصرفية (Bank ABC) في عدد من فروعه، وشريك معتمد لكبرى شركات المقاولات ومكاتب الاستشاريين.",
+        "highlight": true
+      }
     ]
   },
-
   "gallery": {
     "badge": "معرض الأعمال",
     "title": "من أعمالنا المنجزة",
     "subtitle": "مشاريع حقيقية نفتخر بتنفيذها — من فروع بنك ABC إلى الفيلات والمجمعات السكنية والتجارية.",
     "ctaText": "اطلب عرض سعر لمشروعك",
     "projects": [
-      { "image": "images/project-01.webp", "title": "مصنع موسى للكابات", "subtitle": "واجهة ألوميتال وزجاج — المنطقة الصناعية، العاشر من رمضان", "status": "done", "width": "wide" },
-      { "image": "images/project-02.webp", "title": "مصنع موسى للكابات", "subtitle": "واجهة زاوية — ألوميتال وزجاج", "status": "done", "width": "normal" },
-      { "image": "images/project-03.webp", "title": "مصنع موسى للكابات", "subtitle": "شبابيك ألوميتال صناعية", "status": "done", "width": "normal" },
-      { "image": "images/project-04.jpg", "title": "بنك ABC — فرع الأقصر", "subtitle": "واجهة ألوميتال وزجاج هيكلي", "status": "progress", "width": "wide" },
-      { "image": "images/project-05.jpg", "title": "فريق التنفيذ", "subtitle": "بنك ABC — فرع الأقصر", "status": "progress", "width": "normal" },
-      { "image": "images/project-06.webp", "title": "بنك ABC — المبنى الرئيسي", "subtitle": "التسعين الشمالي، التجمع الخامس", "status": "done", "width": "normal" },
-      { "image": "images/project-07.webp", "title": "بنك ABC — المبنى الرئيسي", "subtitle": "قواطع وأبواب زجاجية ألوميتال للمكاتب", "status": "done", "width": "wide" },
-      { "image": "images/project-08.webp", "title": "بنك ABC — المبنى الرئيسي", "subtitle": "التسعين الشمالي — واجهات وأبواب مكتبية داخلية", "status": "done", "width": "full" },
-      { "image": "images/project-09.webp", "title": "بنك ABC — المبنى الرئيسي", "subtitle": "قواطع زجاجية مكاتب مفتوحة", "status": "done", "width": "normal" },
-      { "image": "images/project-10.webp", "title": "بنك ABC — المبنى الرئيسي", "subtitle": "قاطع زجاجي وباب خشبي لمكتب", "status": "done", "width": "normal" },
-      { "image": "images/project-11.webp", "title": "بنك ABC — المبنى الرئيسي", "subtitle": "ممر مكتبي بقواطع زجاجية", "status": "done", "width": "normal" },
-      { "image": "images/project-12.webp", "title": "فيلا Golf City — العبور", "subtitle": "شبابيك ألوميتال داخلية", "status": "done", "width": "normal" },
-      { "image": "images/project-13.jpg", "title": "فيلا Golf City — العبور", "subtitle": "أنظمة الشتر", "status": "done", "width": "normal" },
-      { "image": "images/project-14.webp", "title": "فيلا Swan Lake Residence", "subtitle": "واجهة خارجية", "status": "done", "width": "normal" },
-      { "image": "images/project-15.jpg", "title": "فيلا Swan Lake Residence", "subtitle": "شبابيك وأبواب وشتر ألوميتال", "status": "done", "width": "wide" },
-      { "image": "images/project-16.webp", "title": "Swan Lake — من الداخل", "subtitle": "شبابيك سحاب ألوميتال مع شتر", "status": "done", "width": "normal" },
-      { "image": "images/project-17.webp", "title": "فيلا Golf City — العبور", "subtitle": "شبابيك ألوميتال — إضاءة مسائية", "status": "done", "width": "normal" },
-      { "image": "images/project-18.webp", "title": "الشروق 2", "subtitle": "شبابيك UPVC — تشطيب داخلي كامل", "status": "done", "width": "wide" },
-      { "image": "images/project-19.webp", "title": "شباك سحاب UPVC", "subtitle": "الشروق 2", "status": "done", "width": "normal" },
-      { "image": "images/project-20.webp", "title": "باب سحاب UPVC زجاجي", "subtitle": "الشروق 2", "status": "done", "width": "normal" }
+      {
+        "image": "images/img-1789930214197.jpg",
+        "title": "المقطم",
+        "subtitle": "شباك UPVC قطاع Kompen",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-01.webp",
+        "title": "مصنع موسى للكابات",
+        "subtitle": "واجهة ألوميتال وزجاج — المنطقة الصناعية، العاشر من رمضان",
+        "status": "done",
+        "width": "wide"
+      },
+      {
+        "image": "images/project-02.webp",
+        "title": "مصنع موسى للكابات",
+        "subtitle": "واجهة زاوية — ألوميتال وزجاج",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-03.webp",
+        "title": "مصنع موسى للكابات",
+        "subtitle": "شبابيك ألوميتال صناعية",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-04.jpg",
+        "title": "بنك ABC — فرع الأقصر",
+        "subtitle": "واجهة ألوميتال وزجاج هيكلي",
+        "status": "progress",
+        "width": "wide"
+      },
+      {
+        "image": "images/project-05.jpg",
+        "title": "فريق التنفيذ",
+        "subtitle": "بنك ABC — فرع الأقصر",
+        "status": "progress",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-06.webp",
+        "title": "بنك ABC — المبنى الرئيسي",
+        "subtitle": "التسعين الشمالي، التجمع الخامس",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-07.webp",
+        "title": "بنك ABC — المبنى الرئيسي",
+        "subtitle": "قواطع وأبواب زجاجية ألوميتال للمكاتب",
+        "status": "done",
+        "width": "wide"
+      },
+      {
+        "image": "images/project-08.webp",
+        "title": "بنك ABC — المبنى الرئيسي",
+        "subtitle": "التسعين الشمالي — واجهات وأبواب مكتبية داخلية",
+        "status": "done",
+        "width": "full"
+      },
+      {
+        "image": "images/project-09.webp",
+        "title": "بنك ABC — المبنى الرئيسي",
+        "subtitle": "قواطع زجاجية مكاتب مفتوحة",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-10.webp",
+        "title": "بنك ABC — المبنى الرئيسي",
+        "subtitle": "قاطع زجاجي وباب خشبي لمكتب",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-11.webp",
+        "title": "بنك ABC — المبنى الرئيسي",
+        "subtitle": "ممر مكتبي بقواطع زجاجية",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-12.webp",
+        "title": "فيلا Golf City — العبور",
+        "subtitle": "شبابيك ألوميتال داخلية",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-13.jpg",
+        "title": "فيلا Golf City — العبور",
+        "subtitle": "أنظمة الشتر",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-14.webp",
+        "title": "فيلا Swan Lake Residence",
+        "subtitle": "واجهة خارجية",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-15.jpg",
+        "title": "فيلا Swan Lake Residence",
+        "subtitle": "شبابيك وأبواب وشتر ألوميتال",
+        "status": "done",
+        "width": "wide"
+      },
+      {
+        "image": "images/project-16.webp",
+        "title": "Swan Lake — من الداخل",
+        "subtitle": "شبابيك سحاب ألوميتال مع شتر",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-17.webp",
+        "title": "فيلا Golf City — العبور",
+        "subtitle": "شبابيك ألوميتال — إضاءة مسائية",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-18.webp",
+        "title": "الشروق 2",
+        "subtitle": "شبابيك UPVC — تشطيب داخلي كامل",
+        "status": "done",
+        "width": "wide"
+      },
+      {
+        "image": "images/project-19.webp",
+        "title": "شباك سحاب UPVC",
+        "subtitle": "الشروق 2",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-20.webp",
+        "title": "باب سحاب UPVC زجاجي",
+        "subtitle": "الشروق 2",
+        "status": "done",
+        "width": "normal"
+      }
     ]
   },
-
   "contactSection": {
     "badge": "تواصل معنا",
     "title": "نحن هنا لخدمتك",
@@ -201,7 +395,6 @@ window.SITE = {
       "أخرى"
     ]
   },
-
   "footer": {
     "about": "نصنع الجودة ونبني الثقة. الخيار الأول للواجهات والأبواب والنوافذ وأنظمة الشتر في مصر.",
     "servicesList": [
