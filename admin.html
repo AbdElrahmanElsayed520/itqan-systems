@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>لوحة تحكم موقع ITQAN</title>
+<meta name="robots" content="noindex,nofollow"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{font-family:'Cairo',sans-serif;}
+body{background:#f1f5f9;}
+.inp{width:100%;background:#fff;border:1px solid #cbd5e1;border-radius:10px;padding:10px 14px;font-size:14px;outline:none;transition:border-color .15s;}
+.inp:focus{border-color:#f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,.15);}
+.lbl{display:block;font-size:13px;font-weight:700;color:#334155;margin-bottom:6px;}
+.tab{display:block;width:100%;text-align:right;padding:11px 16px;border-radius:10px;font-weight:700;font-size:14px;color:#475569;transition:.15s;}
+.tab:hover{background:#e2e8f0;}
+.tab.on{background:#0f172a;color:#fff;}
+.box{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;margin-bottom:16px;}
+.btn{border-radius:10px;font-weight:700;font-size:14px;padding:10px 18px;transition:.15s;}
+.btn-a{background:#f59e0b;color:#0f172a;}.btn-a:hover{background:#d97706;}
+.btn-d{background:#0f172a;color:#fff;}.btn-d:hover{background:#1e293b;}
+.btn-g{background:#e2e8f0;color:#334155;}.btn-g:hover{background:#cbd5e1;}
+.btn-r{background:#fee2e2;color:#b91c1c;}.btn-r:hover{background:#fecaca;}
+.chip{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:#fef3c7;color:#92400e;}
+</style>
+</head>
+<body>
+
+<div id="loginGate" class="min-h-screen flex items-center justify-center bg-slate-900 px-4">
+  <form id="loginForm" class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-sm" onsubmit="return doLogin(event)">
+    <div class="text-center mb-6">
+      <span class="w-14 h-14 bg-amber-400 text-slate-900 rounded-2xl grid place-items-center font-black text-xl mx-auto mb-3">IT</span>
+      <h1 class="font-black text-lg text-slate-900">لوحة تحكم موقع ITQAN</h1>
+      <p class="text-sm text-slate-400 mt-1">سجّل الدخول للمتابعة</p>
+    </div>
+    <div class="mb-4">
+      <label class="lbl">اسم المستخدم</label>
+      <input id="loginUser" class="inp" autocomplete="username" required/>
+    </div>
+    <div class="mb-2">
+      <label class="lbl">كلمة المرور</label>
+      <input id="loginPass" type="password" class="inp" autocomplete="current-password" required/>
+    </div>
+    <div id="loginErr" class="text-red-600 text-xs font-bold mb-4 hidden">اسم المستخدم أو كلمة المرور غلط.</div>
+    <button type="submit" class="btn btn-a w-full mt-2">دخول</button>
+  </form>
+</div>
+
+<div id="appRoot" class="hidden">
+<header class="bg-slate-900 text-white sticky top-0 z-40 shadow-lg">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <span class="w-9 h-9 bg-amber-400 text-slate-900 rounded-lg grid place-items-center font-black">IT</span>
+      <div>
+        <div class="font-black leading-tight">لوحة تحكم الموقع</div>
+        <div class="text-[11px] text-white/50" id="draftNote">—</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="resetDraft()" class="btn btn-g hidden sm:inline-block">تراجع عن كل التعديلات</button>
+      <button id="publishBtn" onclick="publish()" class="btn btn-a">حفظ وتنزيل الملفات</button>
+      <button onclick="doLogout()" class="btn btn-g" title="تسجيل خروج">🚪</button>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-[210px_1fr] gap-6">
+  <nav id="tabs" class="space-y-1 lg:sticky lg:top-24 self-start bg-white rounded-2xl p-3 border border-slate-200"></nav>
+  <section id="panel"></section>
+</main>
+</div>
+
+<div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 text-white text-sm font-bold px-5 py-3 rounded-xl shadow-xl"></div>
+
+<script src="data.js"></script>
+<script>
+/* ============ LOGIN GATE ============ */
+var AUTH_HASH = '6aef9777e32ab3a056c3b6f7ae72fedda109cb95f454542dbd3126c3063563cc';
+var LSg = { get:function(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+            set:function(k,v){ try{ localStorage.setItem(k,v); }catch(e){} },
+            del:function(k){ try{ localStorage.removeItem(k); }catch(e){} } };
+function sha256Hex(str){
+  var enc=new TextEncoder().encode(str);
+  return crypto.subtle.digest('SHA-256', enc).then(function(buf){
+    return Array.prototype.map.call(new Uint8Array(buf), function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  });
+}
+function showApp(){
+  document.getElementById('loginGate').classList.add('hidden');
+  document.getElementById('appRoot').classList.remove('hidden');
+  if(typeof render==='function' && typeof D!=='undefined') render();
+}
+function doLogin(e){
+  e.preventDefault();
+  var u=document.getElementById('loginUser').value.trim();
+  var p=document.getElementById('loginPass').value;
+  sha256Hex(u+':'+p).then(function(hash){
+    if(hash===AUTH_HASH){
+      LSg.set('itqan_admin_auth','1');
+      document.getElementById('loginErr').classList.add('hidden');
+      showApp();
+    } else {
+      document.getElementById('loginErr').classList.remove('hidden');
+    }
+  });
+  return false;
+}
+function doLogout(){
+  if(!confirm('تسجيل الخروج من لوحة التحكم؟')) return;
+  LSg.del('itqan_admin_auth');
+  document.getElementById('appRoot').classList.add('hidden');
+  document.getElementById('loginGate').classList.remove('hidden');
+  document.getElementById('loginUser').value=''; document.getElementById('loginPass').value='';
+}
+if(LSg.get('itqan_admin_auth')==='1'){ showApp(); }
+</script>
+<script>
+/* ============ STATE ============ */
+var LS = { get:function(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+           set:function(k,v){ try{ localStorage.setItem(k,v); }catch(e){} },
+           del:function(k){ try{ localStorage.removeItem(k); }catch(e){} } };
+var ORIGINAL = JSON.parse(JSON.stringify(window.SITE));
+var D = JSON.parse(LS.get('itqan_draft') || 'null') || JSON.parse(JSON.stringify(window.SITE));
+var NEW_IMAGES = {};           // filename -> Blob (added this session)
+var PREVIEWS   = {};           // filename -> objectURL
+
+/* ============ GITHUB CONNECTION (auto-publish) ============ */
+var GH = {
+  owner:  LS.get('itqan_gh_owner')  || '',
+  repo:   LS.get('itqan_gh_repo')   || '',
+  branch: LS.get('itqan_gh_branch') || 'main',
+  token:  LS.get('itqan_gh_token')  || ''
+};
+function isGhConnected(){ return !!(GH.owner && GH.repo && GH.token); }
+function saveGh(){ LS.set('itqan_gh_owner',GH.owner); LS.set('itqan_gh_repo',GH.repo); LS.set('itqan_gh_branch',GH.branch); LS.set('itqan_gh_token',GH.token); }
+function disconnectGh(){
+  if(!confirm('هيتم قطع الاتصال بـ GitHub من على الجهاز ده. تمام؟')) return;
+  GH={owner:'',repo:'',branch:'main',token:''};
+  LS.del('itqan_gh_owner'); LS.del('itqan_gh_repo'); LS.del('itqan_gh_branch'); LS.del('itqan_gh_token');
+  render();
+}
+function b64EncodeUnicode(str){
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(m,p1){ return String.fromCharCode('0x'+p1); }));
+}
+function blobToBase64(blob){
+  return new Promise(function(resolve,reject){
+    var r=new FileReader();
+    r.onload=function(){ resolve(r.result.split(',')[1]); };
+    r.onerror=reject;
+    r.readAsDataURL(blob);
+  });
+}
+function ghApiUrl(path){ return 'https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/'+path; }
+function ghGetFile(path){
+  return fetch(ghApiUrl(path)+'?ref='+encodeURIComponent(GH.branch), {
+    headers:{ 'Authorization':'token '+GH.token, 'Accept':'application/vnd.github+json' }
+  }).then(function(res){
+    if(res.status===404) return null;
+    if(!res.ok) return res.text().then(function(t){ throw new Error('تعذّر قراءة '+path+' ('+res.status+')'); });
+    return res.json();
+  });
+}
+function ghPutRaw(path, base64Content, message, sha){
+  var body={ message:message, content:base64Content, branch:GH.branch };
+  if(sha) body.sha=sha;
+  return fetch(ghApiUrl(path), {
+    method:'PUT',
+    headers:{ 'Authorization':'token '+GH.token, 'Accept':'application/vnd.github+json', 'Content-Type':'application/json' },
+    body: JSON.stringify(body)
+  }).then(function(res){
+    if(!res.ok) return res.text().then(function(t){ throw new Error('تعذّر حفظ '+path+' ('+res.status+')'); });
+    return res.json();
+  });
+}
+function connectGh(){
+  var owner=document.getElementById('ghOwner').value.trim();
+  var repo=document.getElementById('ghRepo').value.trim();
+  var branch=document.getElementById('ghBranch').value.trim()||'main';
+  var token=document.getElementById('ghToken').value.trim();
+  if(!owner||!repo||!token){ alert('لازم تملأ اسم المستخدم واسم المستودع والتوكن.'); return; }
+  var prev=JSON.parse(JSON.stringify(GH));
+  GH={owner:owner,repo:repo,branch:branch,token:token};
+  toast('جاري الاختبار...');
+  fetch('https://api.github.com/repos/'+owner+'/'+repo, { headers:{'Authorization':'token '+token,'Accept':'application/vnd.github+json'} })
+    .then(function(res){
+      if(res.status===404) throw new Error('المستودع مش موجود، أو التوكن مالوش صلاحية عليه.');
+      if(res.status===401) throw new Error('التوكن غلط أو منتهي.');
+      if(!res.ok) throw new Error('فشل الاتصال (كود '+res.status+').');
+      saveGh();
+      toast('تم الاتصال بنجاح ✅');
+      render();
+    })
+    .catch(function(e){ GH=prev; alert('فشل الاتصال:\n'+e.message); });
+}
+async function publishLive(){
+  if(!confirm('هيتم نشر كل التعديلات على الموقع الحقيقي دلوقتي. تكمل؟')) return;
+  toast('جاري النشر...');
+  try{
+    var dataStr = '/* ملف بيانات موقع ITQAN — آخر تحديث: '+new Date().toLocaleString('ar-EG')+' */\n'+
+                  'window.SITE = '+JSON.stringify(D,null,2)+';\n';
+    var existingData = await ghGetFile('data.js');
+    await ghPutRaw('data.js', b64EncodeUnicode(dataStr), 'تحديث بيانات الموقع من لوحة التحكم', existingData?existingData.sha:null);
+
+    var names=Object.keys(NEW_IMAGES);
+    for(var i=0;i<names.length;i++){
+      var name=names[i];
+      var b64=await blobToBase64(NEW_IMAGES[name]);
+      var existingImg=await ghGetFile(name).catch(function(){return null;});
+      await ghPutRaw(name, b64, 'إضافة صورة جديدة: '+name, existingImg?existingImg.sha:null);
+    }
+
+    NEW_IMAGES={}; PREVIEWS={};
+    ORIGINAL=JSON.parse(JSON.stringify(D));
+    LS.del('itqan_draft');
+    toast('تم النشر على الموقع 🎉');
+    alert('تم نشر كل التعديلات على موقعك مباشرة.\nممكن تاخد شوية ثواني لحد ما تظهر — بعدها اعمل تحديث قوي (Ctrl+F5).');
+    render();
+  }catch(e){
+    alert('حصل خطأ أثناء النشر:\n'+e.message+'\n\nتأكد إن التوكن لسه شغال وعنده صلاحية Contents: Read and write على المستودع، وحاول تاني.');
+  }
+}
+
+function save(){ LS.set('itqan_draft', JSON.stringify(D));
+  document.getElementById('draftNote').textContent = 'آخر تعديل: ' + new Date().toLocaleTimeString('ar-EG');
+}
+function toast(msg){ var t=document.getElementById('toast'); t.textContent=msg; t.classList.remove('hidden');
+  clearTimeout(t._t); t._t=setTimeout(function(){t.classList.add('hidden');},2600); }
+function resetDraft(){
+  if(!confirm('هيتم إلغاء كل التعديلات غير المحفوظة والرجوع لآخر نسخة مرفوعة. تمام؟')) return;
+  LS.del('itqan_draft'); D = JSON.parse(JSON.stringify(ORIGINAL)); NEW_IMAGES={}; render();
+  toast('رجعنا للنسخة الأصلية');
+}
+function getP(path){ return path.split('.').reduce(function(o,k){ return o==null?o:o[k]; }, D); }
+function setP(path, val){
+  var ks=path.split('.'), o=D;
+  for(var i=0;i<ks.length-1;i++) o=o[ks[i]];
+  o[ks[ks.length-1]]=val; save();
+}
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function imgSrc(f){ return PREVIEWS[f] || f; }
+
+/* ============ FIELD BUILDERS ============ */
+function fText(path, label, hint){
+  return '<div class="mb-4"><label class="lbl">'+esc(label)+(hint?' <span class="font-normal text-slate-400">'+esc(hint)+'</span>':'')+'</label>'+
+    '<input class="inp" data-path="'+path+'" value="'+esc(getP(path))+'"/></div>';
+}
+function fArea(path, label, rows){
+  return '<div class="mb-4"><label class="lbl">'+esc(label)+'</label>'+
+    '<textarea class="inp resize-y" rows="'+(rows||3)+'" data-path="'+path+'">'+esc(getP(path))+'</textarea></div>';
+}
+function fSelect(path, label, opts){
+  var v=getP(path);
+  return '<div class="mb-4"><label class="lbl">'+esc(label)+'</label><select class="inp" data-path="'+path+'">'+
+    opts.map(function(o){ return '<option value="'+esc(o[0])+'"'+(String(v)===String(o[0])?' selected':'')+'>'+esc(o[1])+'</option>'; }).join('')+
+    '</select></div>';
+}
+function fImage(path, label){
+  var f=getP(path);
+  return '<div class="mb-4"><label class="lbl">'+esc(label)+'</label>'+
+    '<div class="flex items-center gap-3">'+
+      '<img src="'+esc(imgSrc(f))+'" class="w-20 h-20 rounded-xl object-cover border border-slate-200 bg-slate-100" onerror="this.style.opacity=.25"/>'+
+      '<div class="flex-1 min-w-0">'+
+        '<div class="text-xs text-slate-500 truncate mb-2" dir="ltr">'+esc(f)+(NEW_IMAGES[f]?' <span class="chip">جديدة</span>':'')+'</div>'+
+        '<button class="btn btn-g text-xs" onclick="pickImage(\''+path+'\')">تغيير الصورة</button>'+
+      '</div>'+
+    '</div></div>';
+}
+/* simple string-array editor */
+function fList(path, label, placeholder){
+  var arr=getP(path)||[];
+  return '<div class="mb-4"><label class="lbl">'+esc(label)+'</label><div class="space-y-2">'+
+    arr.map(function(v,i){ return '<div class="flex gap-2">'+
+      '<input class="inp" data-path="'+path+'.'+i+'" value="'+esc(v)+'" placeholder="'+esc(placeholder||'')+'"/>'+
+      '<button class="btn btn-r px-3" onclick="delItem(\''+path+'\','+i+')">حذف</button></div>'; }).join('')+
+    '</div><button class="btn btn-g text-xs mt-2" onclick="addItem(\''+path+'\',\'\')">+ إضافة سطر</button></div>';
+}
+function addItem(path, val){ getP(path).push(typeof val==='object'?JSON.parse(JSON.stringify(val)):val); save(); render(); }
+function delItem(path, i){ if(!confirm('تأكيد الحذف؟')) return; getP(path).splice(i,1); save(); render(); }
+function moveItem(path, i, dir){
+  var a=getP(path), j=i+dir; if(j<0||j>=a.length) return;
+  var t=a[i]; a[i]=a[j]; a[j]=t; save(); render();
+}
+
+/* ============ IMAGE PICKER + RESIZE ============ */
+function pickImage(path){
+  var inp=document.createElement('input'); inp.type='file'; inp.accept='image/*';
+  inp.onchange=function(){
+    var file=inp.files[0]; if(!file) return;
+    toast('جاري ضغط الصورة...');
+    var r=new FileReader();
+    r.onload=function(){
+      var im=new Image();
+      im.onload=function(){
+        var maxw=1600, w=im.width, h=im.height;
+        if(w>maxw){ h=Math.round(h*maxw/w); w=maxw; }
+        var c=document.createElement('canvas'); c.width=w; c.height=h;
+        c.getContext('2d').drawImage(im,0,0,w,h);
+        c.toBlob(function(blob){
+          var name='images/img-'+Date.now()+'.jpg';
+          NEW_IMAGES[name]=blob;
+          PREVIEWS[name]=URL.createObjectURL(blob);
+          setP(path,name); render();
+          toast('تم — الصورة اتحفظت باسم '+name.replace('images/',''));
+        },'image/jpeg',0.82);
+      };
+      im.src=r.result;
+    };
+    r.readAsDataURL(file);
+  };
+  inp.click();
+}
+
+/* ============ TABS ============ */
+var TABS=[
+  ['general','بيانات عامة'],
+  ['contact','بيانات التواصل'],
+  ['hero','الواجهة الرئيسية'],
+  ['about','من نحن'],
+  ['services','الخدمات'],
+  ['why','المميزات'],
+  ['gallery','معرض الأعمال'],
+  ['footer','الفوتر'],
+  ['connect','🚀 النشر التلقائي']
+];
+var CUR = LS.get('itqan_tab') || 'general';
+
+var VIEWS = {
+
+general: function(){
+  return '<div class="box"><h2 class="font-black text-lg mb-5">بيانات عامة</h2>'+
+    fText('meta.brandName','اسم الشركة')+
+    fText('meta.brandTagline','السطر التحت الاسم')+
+    fImage('meta.logo','اللوجو')+
+    fText('meta.title','عنوان الصفحة (بيظهر في جوجل وفي تبويب المتصفح)')+
+    fArea('meta.description','وصف الموقع (بيظهر تحت العنوان في نتائج جوجل)',2)+
+  '</div>';
+},
+
+contact: function(){
+  return '<div class="box"><h2 class="font-black text-lg mb-5">بيانات التواصل</h2>'+
+    fArea('contact.address','العنوان',2)+
+    fList('contact.phones','أرقام الهواتف','مثال: 01005036557')+
+    fText('contact.whatsapp','رقم واتساب بصيغة دولية','بدون + وبدون صفر، مثال: 201113795075')+
+    fText('contact.whatsappDisplay','رقم واتساب كما يظهر للزائر')+
+    fText('contact.email','البريد الإلكتروني')+
+    '<div class="grid grid-cols-2 gap-4">'+fText('contact.hoursDays','أيام العمل')+fText('contact.hoursTime','مواعيد العمل')+'</div>'+
+    '<div class="grid grid-cols-2 gap-4">'+fText('contact.hoursClosedDay','يوم الإجازة')+fText('contact.hoursClosedText','حالة الإجازة')+'</div>'+
+  '</div>'+
+  '<div class="box"><h2 class="font-black text-lg mb-5">قسم «تواصل معنا»</h2>'+
+    fText('contactSection.badge','العنوان الصغير')+
+    fText('contactSection.title','العنوان الرئيسي')+
+    fText('contactSection.subtitle','السطر التوضيحي')+
+    fText('contactSection.formTitle','عنوان الفورم')+
+    fText('contactSection.formButton','نص زر الإرسال')+
+    fText('contactSection.whatsappButton','نص زر واتساب')+
+    fList('contactSection.serviceOptions','أنواع الخدمات في الفورم')+
+  '</div>';
+},
+
+hero: function(){
+  var h='<div class="box"><h2 class="font-black text-lg mb-5">الواجهة الرئيسية</h2>'+
+    fImage('hero.image','صورة الخلفية')+
+    fText('hero.badge','الجملة الصغيرة فوق العنوان')+
+    fText('hero.titleLine1','العنوان — السطر الأول')+
+    fText('hero.highlight','الكلمة الملونة داخل السطر الأول')+
+    fText('hero.titleLine2','العنوان — السطر الثاني')+
+    fArea('hero.subtitle','النص التوضيحي',3)+
+    '<div class="grid grid-cols-2 gap-4">'+fText('hero.btnPrimary','الزر الأول')+fText('hero.btnSecondary','الزر الثاني')+'</div>'+
+  '</div><div class="box"><h2 class="font-black text-lg mb-5">الكروت الثلاثة</h2>';
+  D.hero.cards.forEach(function(c,i){
+    h+='<div class="border border-slate-200 rounded-xl p-4 mb-3"><div class="flex justify-between items-center mb-3">'+
+      '<span class="font-bold text-sm text-slate-500">كارت '+(i+1)+'</span>'+
+      '<button class="btn btn-r text-xs" onclick="delItem(\'hero.cards\','+i+')">حذف</button></div>'+
+      '<div class="grid grid-cols-[70px_1fr] gap-3">'+fText('hero.cards.'+i+'.icon','رمز')+fText('hero.cards.'+i+'.title','العنوان')+'</div>'+
+      fText('hero.cards.'+i+'.text','النص')+'</div>';
+  });
+  return h+'<button class="btn btn-g text-xs" onclick=\'addItem("hero.cards",{icon:"⭐",title:"عنوان جديد",text:"النص"})\'>+ إضافة كارت</button></div>';
+},
+
+about: function(){
+  var h='<div class="box"><h2 class="font-black text-lg mb-5">قسم من نحن</h2>'+
+    fText('about.badge','العنوان الصغير')+
+    fText('about.titleLine1','العنوان — السطر الأول')+
+    fText('about.titleLine2','العنوان — السطر الثاني (ملون)')+
+    fImage('about.image','الصورة الجانبية')+
+    fList('about.paragraphs','الفقرات')+
+    fList('about.bullets','نقاط الاعتماد')+
+  '</div><div class="box"><h2 class="font-black text-lg mb-5">الأرقام</h2>';
+  D.about.stats.forEach(function(s,i){
+    h+='<div class="border border-slate-200 rounded-xl p-4 mb-3"><div class="flex justify-between items-center mb-3">'+
+      '<span class="font-bold text-sm text-slate-500">رقم '+(i+1)+'</span>'+
+      '<button class="btn btn-r text-xs" onclick="delItem(\'about.stats\','+i+')">حذف</button></div>'+
+      '<div class="grid grid-cols-2 gap-3">'+fText('about.stats.'+i+'.value','القيمة')+fText('about.stats.'+i+'.label','الوصف')+'</div>'+
+      fSelect('about.stats.'+i+'.style','اللون',[['dark','غامق'],['amber','ذهبي'],['light','فاتح']])+'</div>';
+  });
+  h+='<button class="btn btn-g text-xs" onclick=\'addItem("about.stats",{value:"0",label:"وصف",style:"light"})\'>+ إضافة رقم</button></div>'+
+     '<div class="box"><h2 class="font-black text-lg mb-5">الخبرات والإنجازات</h2>'+fText('about.achievementsBadge','العنوان الصغير');
+  D.about.achievements.forEach(function(a,i){
+    h+='<div class="border border-slate-200 rounded-xl p-4 mb-3"><div class="flex justify-between items-center mb-3">'+
+      '<span class="font-bold text-sm text-slate-500">إنجاز '+(i+1)+'</span>'+
+      '<button class="btn btn-r text-xs" onclick="delItem(\'about.achievements\','+i+')">حذف</button></div>'+
+      '<div class="grid grid-cols-[70px_1fr] gap-3">'+fText('about.achievements.'+i+'.icon','رمز')+
+      fText('about.achievements.'+i+'.text','النص','ممكن تحوّط الكلام المهم بـ &lt;strong&gt;...&lt;/strong&gt;')+'</div></div>';
+  });
+  return h+'<button class="btn btn-g text-xs" onclick=\'addItem("about.achievements",{icon:"✅",text:"إنجاز جديد"})\'>+ إضافة إنجاز</button></div>';
+},
+
+services: function(){
+  var h='<div class="box"><h2 class="font-black text-lg mb-5">عنوان القسم</h2>'+
+    fText('services.badge','العنوان الصغير')+
+    fText('services.titleLine1','العنوان — السطر الأول')+
+    fText('services.titleLine2','العنوان — السطر الثاني')+
+    fArea('services.subtitle','النص التوضيحي',2)+'</div>';
+  D.services.items.forEach(function(s,i){
+    h+='<div class="box"><div class="flex justify-between items-center mb-4">'+
+      '<h3 class="font-black">'+esc(s.title||'خدمة')+'</h3>'+
+      '<div class="flex gap-2">'+
+        '<button class="btn btn-g text-xs px-3" onclick="moveItem(\'services.items\','+i+',-1)">▲</button>'+
+        '<button class="btn btn-g text-xs px-3" onclick="moveItem(\'services.items\','+i+',1)">▼</button>'+
+        '<button class="btn btn-r text-xs" onclick="delItem(\'services.items\','+i+')">حذف</button></div></div>'+
+      fImage('services.items.'+i+'.image','صورة الخدمة')+
+      fText('services.items.'+i+'.title','اسم الخدمة')+
+      fArea('services.items.'+i+'.text','الوصف',3)+
+      fSelect('services.items.'+i+'.size','حجم الكارت',[['large','كبير (عمودين)'],['small','صغير (ثلاث أعمدة)']])+
+      fList('services.items.'+i+'.features','المميزات')+'</div>';
+  });
+  return h+'<button class="btn btn-d" onclick=\'addItem("services.items",{size:"small",image:"images/srv-windows.webp",title:"خدمة جديدة",text:"وصف الخدمة",features:["ميزة أولى"]})\'>+ إضافة خدمة</button>';
+},
+
+why: function(){
+  var h='<div class="box"><h2 class="font-black text-lg mb-5">عنوان القسم</h2>'+
+    fText('why.badge','العنوان الصغير')+fText('why.title','العنوان الرئيسي')+fArea('why.subtitle','النص التوضيحي',2)+'</div>';
+  D.why.items.forEach(function(w,i){
+    h+='<div class="box"><div class="flex justify-between items-center mb-4">'+
+      '<h3 class="font-black text-sm">'+esc(w.title||'ميزة')+'</h3>'+
+      '<div class="flex gap-2">'+
+        '<button class="btn btn-g text-xs px-3" onclick="moveItem(\'why.items\','+i+',-1)">▲</button>'+
+        '<button class="btn btn-g text-xs px-3" onclick="moveItem(\'why.items\','+i+',1)">▼</button>'+
+        '<button class="btn btn-r text-xs" onclick="delItem(\'why.items\','+i+')">حذف</button></div></div>'+
+      '<div class="grid grid-cols-[70px_1fr] gap-3">'+fText('why.items.'+i+'.icon','رمز')+fText('why.items.'+i+'.title','العنوان')+'</div>'+
+      fArea('why.items.'+i+'.text','النص',2)+
+      fSelect('why.items.'+i+'.highlight','شكل الكارت',[[false,'عادي (غامق)'],[true,'مميز (ذهبي)']])+'</div>';
+  });
+  return h+'<button class="btn btn-d" onclick=\'addItem("why.items",{icon:"⭐",title:"ميزة جديدة",text:"الوصف",highlight:false})\'>+ إضافة ميزة</button>';
+},
+
+gallery: function(){
+  var h='<div class="box"><h2 class="font-black text-lg mb-5">عنوان المعرض</h2>'+
+    fText('gallery.badge','العنوان الصغير')+fText('gallery.title','العنوان الرئيسي')+
+    fArea('gallery.subtitle','النص التوضيحي',2)+fText('gallery.ctaText','نص زر آخر القسم')+'</div>'+
+    '<div class="flex items-center justify-between mb-4">'+
+      '<h2 class="font-black text-lg">المشاريع <span class="text-slate-400 font-normal text-sm">('+D.gallery.projects.length+')</span></h2>'+
+      '<button class="btn btn-d" onclick="addProject()">+ إضافة مشروع</button></div>';
+  D.gallery.projects.forEach(function(p,i){
+    h+='<div class="box"><div class="flex gap-4">'+
+      '<img src="'+esc(imgSrc(p.image))+'" class="w-24 h-24 rounded-xl object-cover border border-slate-200 bg-slate-100 flex-shrink-0"/>'+
+      '<div class="flex-1 min-w-0">'+
+        '<div class="flex justify-between items-center mb-3">'+
+          '<span class="text-xs text-slate-400" dir="ltr">'+esc(p.image)+(NEW_IMAGES[p.image]?' <span class="chip">جديدة</span>':'')+'</span>'+
+          '<div class="flex gap-1">'+
+            '<button class="btn btn-g text-xs px-3" onclick="moveItem(\'gallery.projects\','+i+',-1)">▲</button>'+
+            '<button class="btn btn-g text-xs px-3" onclick="moveItem(\'gallery.projects\','+i+',1)">▼</button>'+
+            '<button class="btn btn-g text-xs" onclick="pickImage(\'gallery.projects.'+i+'.image\')">تغيير الصورة</button>'+
+            '<button class="btn btn-r text-xs" onclick="delItem(\'gallery.projects\','+i+')">حذف</button></div></div>'+
+        fText('gallery.projects.'+i+'.title','اسم المشروع')+
+        fText('gallery.projects.'+i+'.subtitle','الوصف تحت الاسم')+
+        '<div class="grid grid-cols-2 gap-3">'+
+          fSelect('gallery.projects.'+i+'.status','الحالة',[['done','✅ تم التنفيذ'],['progress','🚧 جاري التنفيذ']])+
+          fSelect('gallery.projects.'+i+'.width','حجم الصورة',[['normal','عادي'],['wide','عريض'],['full','بعرض الصفحة']])+
+        '</div>'+
+      '</div></div></div>';
+  });
+  return h;
+},
+
+footer: function(){
+  return '<div class="box"><h2 class="font-black text-lg mb-5">الفوتر</h2>'+
+    fArea('footer.about','نبذة الشركة',3)+
+    fList('footer.servicesList','قائمة الخدمات في الفوتر')+
+    fText('footer.copyright','حقوق النشر','السنة بتتحط تلقائياً')+
+  '</div>';
+},
+
+connect: function(){
+  var h='<div class="box"><h2 class="font-black text-lg mb-2">النشر التلقائي على GitHub</h2>'+
+    '<p class="text-sm text-slate-500 mb-5">اربط لوحة التحكم بمستودع GitHub بتاع موقعك، وزرار "نشر" فوق هيحدّث الموقع مباشرة من غير ما ترفع أي ملف بايدك.</p>';
+  if(isGhConnected()){
+    h+='<div class="flex items-center gap-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl p-4 mb-5 text-sm font-bold">'+
+      '✅ متصل بمستودع <span dir="ltr">'+esc(GH.owner)+'/'+esc(GH.repo)+'</span> — فرع <span dir="ltr">'+esc(GH.branch)+'</span></div>'+
+      '<button class="btn btn-r" onclick="disconnectGh()">قطع الاتصال</button>';
+  } else {
+    h+='<div class="mb-4"><label class="lbl">اسم المستخدم أو المنظمة على GitHub</label><input class="inp" id="ghOwner" dir="ltr" placeholder="مثال: AbdElrahmanElsayed520" value="'+esc(GH.owner)+'"/></div>'+
+      '<div class="mb-4"><label class="lbl">اسم المستودع (Repository)</label><input class="inp" id="ghRepo" dir="ltr" placeholder="مثال: itqan-site" value="'+esc(GH.repo)+'"/></div>'+
+      '<div class="mb-4"><label class="lbl">اسم الفرع (Branch)</label><input class="inp" id="ghBranch" dir="ltr" value="'+esc(GH.branch||'main')+'"/></div>'+
+      '<div class="mb-4"><label class="lbl">Personal Access Token</label><input class="inp" id="ghToken" type="password" dir="ltr" placeholder="github_pat_..."/></div>'+
+      '<button class="btn btn-a" onclick="connectGh()">اتصال واختبار</button>';
+  }
+  h+='</div><div class="box"><h2 class="font-black text-lg mb-4">إزاي تجيب Personal Access Token؟</h2>'+
+    '<ol class="text-sm text-slate-600 space-y-2 pr-5" style="list-style:decimal">'+
+      '<li>على GitHub، ادخل على الصورة الشخصية فوق يمين ← Settings.</li>'+
+      '<li>من القائمة الجانبية، انزل لحد Developer settings.</li>'+
+      '<li>Personal access tokens ← Fine-grained tokens ← Generate new token.</li>'+
+      '<li>في Repository access اختار Only select repositories وحدد مستودع الموقع بتاعك.</li>'+
+      '<li>في Permissions افتح Contents واختار Read and write.</li>'+
+      '<li>اضغط Generate token وانسخه فورًا (GitHub مش هيوريهولك تاني) وحطه فوق.</li>'+
+    '</ol>'+
+    '<p class="text-xs text-slate-400 mt-4">التوكن بيتحفظ على جهازك بس (مش على أي سيرفر)، وبيديك صلاحية كتابة على المستودع ده بس. لو الجهاز مشترك أو عام، اعمل قطع اتصال بعد ما تخلص.</p></div>';
+  return h;
+}
+
+};
+
+function addProject(){
+  D.gallery.projects.unshift({image:'images/project-01.webp',title:'مشروع جديد',subtitle:'وصف المشروع',status:'done',width:'normal'});
+  save(); render();
+  setTimeout(function(){ pickImage('gallery.projects.0.image'); }, 150);
+}
+
+/* ============ RENDER ============ */
+function render(){
+  document.getElementById('tabs').innerHTML = TABS.map(function(t){
+    return '<button class="tab'+(t[0]===CUR?' on':'')+'" onclick="go(\''+t[0]+'\')">'+t[1]+'</button>';
+  }).join('');
+  document.getElementById('panel').innerHTML = VIEWS[CUR]();
+  var pb=document.getElementById('publishBtn');
+  if(pb) pb.textContent = isGhConnected() ? '🚀 نشر على الموقع' : 'حفظ وتنزيل الملفات';
+  window.scrollTo({top:0});
+}
+function go(t){ CUR=t; LS.set('itqan_tab',t); render(); }
+
+document.addEventListener('input', function(e){
+  var p=e.target.getAttribute('data-path'); if(!p) return;
+  setP(p, e.target.value);
+});
+document.addEventListener('change', function(e){
+  var p=e.target.getAttribute('data-path'); if(!p || e.target.tagName!=='SELECT') return;
+  var v=e.target.value;
+  setP(p, v==='true'?true : v==='false'?false : v);
+  render();
+});
+
+/* ============ PUBLISH ============ */
+function dl(blob, filename){
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=filename; document.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+function publishDownload(){
+  var js='/* ملف بيانات موقع ITQAN — آخر تحديث: '+new Date().toLocaleString('ar-EG')+' */\n'+
+         'window.SITE = '+JSON.stringify(D,null,2)+';\n';
+  dl(new Blob([js],{type:'text/javascript;charset=utf-8'}), 'data.js');
+
+  var names=Object.keys(NEW_IMAGES);
+  names.forEach(function(n,i){
+    setTimeout(function(){ dl(NEW_IMAGES[n], n.replace('images/','')); }, 700*(i+1));
+  });
+
+  var msg = names.length
+    ? 'نزّلنا لك ملف data.js و'+names.length+' صورة جديدة.\n\nالخطوات:\n1) ارفع data.js في نفس مجلد index.html (استبدل القديم).\n2) ارفع الصور الجديدة جوه مجلد images.\n3) افتح الموقع واعمل تحديث (Ctrl+F5).\n\nملحوظة: تقدر من تبويب "🚀 النشر التلقائي" تربط لوحة التحكم بمستودع GitHub بتاعك عشان الزرار ده ينشر لوحده من غير ما تنزّل حاجة.'
+    : 'نزّلنا لك ملف data.js.\n\nارفعه في نفس مجلد index.html مكان القديم، وبعدها افتح الموقع واعمل تحديث (Ctrl+F5).';
+  setTimeout(function(){ alert(msg); }, 400);
+  toast('تم التنزيل');
+}
+function publish(){
+  if(isGhConnected()) publishLive();
+  else publishDownload();
+}
+
+window.addEventListener('beforeunload', function(e){
+  if(Object.keys(NEW_IMAGES).length){ e.preventDefault(); e.returnValue=''; }
+});
+
+if(LS.get('itqan_draft')) document.getElementById('draftNote').textContent='فيه تعديلات محفوظة لسه متنزلتش';
+else document.getElementById('draftNote').textContent='جاهز';
+if(LSg.get('itqan_admin_auth')==='1'){ render(); }
+</script>
+</body>
+</html>
