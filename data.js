@@ -1,4 +1,4 @@
-/* ملف بيانات موقع ITQAN — آخر تحديث: ٢١‏/٩‏/٢٠٢٦، ٦:٤٧:١٧ م */
+/* ملف بيانات موقع ITQAN — آخر تحديث: ٢١‏/٩‏/٢٠٢٦، ٩:٣٢:٣٧ م */
 window.SITE = {
   "meta": {
     "title": "ITQAN — إتقان للألوميتال والـ UPVC والشتر",
@@ -229,6 +229,139 @@ window.SITE = {
     "ctaText": "اطلب عرض سعر لمشروعك",
     "projects": [
       {
+        "image": "images/img-1790015535636.jpg",
+        "title": "Volcano 120",
+        "subtitle": "Sun Capital — حدائق أكتوبر",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790015055271.jpg",
+        "title": "Volcano 120",
+        "subtitle": "Sun Capital — حدائق أكتوبر",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790014994424.jpg",
+        "title": "وحدة ألوميتال خاصة بغلاية",
+        "subtitle": "Swan Lake Residence – New Cairo",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790014922087.jpg",
+        "title": "PS كبير",
+        "subtitle": "بنك ABC — فرع نجاتي سراج ، مدينة نصر ",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790014612864.jpg",
+        "title": "Partitions ( Sonata 45 )",
+        "subtitle": "بنك ABC — فرع محي الدين أبو العز ، المهندسين",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790014563054.jpg",
+        "title": "شاتر 5.8سم النيل",
+        "subtitle": "وصال — الشروق",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790014537017.jpg",
+        "title": "Sonata 45",
+        "subtitle": "وصال — الشروق",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790014500976.jpg",
+        "title": "Sonata معدل ألماني",
+        "subtitle": "وصال — الشروق",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790014408302.jpg",
+        "title": "ِAlumil 14600",
+        "subtitle": "وصال — الشروق",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790014370205.jpg",
+        "title": "PS كبير",
+        "subtitle": "التجمع الخامس",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790014285883.jpg",
+        "title": "UPVC ( Kraft Line )",
+        "subtitle": "شبين الكوم — المنوفية",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790014036226.jpg",
+        "title": "Tango 60",
+        "subtitle": "مونتن فيو — التجمع الخامس",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790013979327.jpg",
+        "title": "UPVC ( Kompen )",
+        "subtitle": "الشروق",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790013908073.jpg",
+        "title": "PS كبير",
+        "subtitle": "بيت الوطن — التجمع الخامس",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790013869715.jpg",
+        "title": "استراكشر ( Panorama 52 )",
+        "subtitle": "بنك ABC — فرع طنطا",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790013782133.jpg",
+        "title": "استراكشر ( Panorama 52 ) ",
+        "subtitle": "بنك ABC — فرع أسيوط",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790013735093.jpg",
+        "title": "استراكشر ( Panorama 52 ) ",
+        "subtitle": "بنك ABC — فرع الأسكندرية ",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790012081616.jpg",
+        "title": "باب سيكوريت",
+        "subtitle": "بنك ABC — فرع عمارات العبور",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/img-1790012007098.jpg",
+        "title": "واجهة كلادنج",
+        "subtitle": "بنك ABC — فرع عمارات العبور",
+        "status": "done",
+        "width": "normal"
+      },
+      {
         "image": "images/img-1790005546565.jpg",
         "title": "PS كبير",
         "subtitle": "Aqua Marina - شرم الشيخ",
@@ -264,16 +397,9 @@ window.SITE = {
         "width": "normal"
       },
       {
-        "image": "images/project-01.webp",
-        "title": "مصنع موسى ",
-        "subtitle": " المنطقة الصناعية، العاشر من رمضان",
-        "status": "done",
-        "width": "wide"
-      },
-      {
         "image": "images/project-03.webp",
-        "title": "مصنع موسى للكابات",
-        "subtitle": "شبابيك ألوميتال صناعية",
+        "title": "Sonata 45",
+        "subtitle": " المنطقة الصناعية، العاشر من رمضان ( مصنع موسى )",
         "status": "done",
         "width": "normal"
       },
@@ -301,35 +427,21 @@ window.SITE = {
       {
         "image": "images/project-07.webp",
         "title": "قواطيع ( Sonata 45 ) ",
-        "subtitle": "بنك ABC — المبنى الرئيسي",
+        "subtitle": "بنك ABC — المبنى الرئيسي، التسعين الشمالي",
         "status": "done",
         "width": "wide"
       },
       {
         "image": "images/project-08.webp",
-        "title": "بنك ABC — المبنى الرئيسي",
-        "subtitle": "التسعين الشمالي — واجهات وأبواب مكتبية داخلية",
+        "title": "قواطيع ( Sonata 45 )",
+        "subtitle": "بنك ABC — المبنى الرئيسي، التسعين الشمالي",
         "status": "done",
         "width": "full"
       },
       {
-        "image": "images/project-09.webp",
-        "title": "بنك ABC — المبنى الرئيسي",
-        "subtitle": "قواطع زجاجية مكاتب مفتوحة",
-        "status": "done",
-        "width": "normal"
-      },
-      {
         "image": "images/project-10.webp",
-        "title": "بنك ABC — المبنى الرئيسي",
-        "subtitle": "قاطع زجاجي وباب خشبي لمكتب",
-        "status": "done",
-        "width": "normal"
-      },
-      {
-        "image": "images/project-11.webp",
-        "title": "قواطيع ( Sonata 45 )",
-        "subtitle": "بنك ABC — المبنى الرئيسي",
+        "title": "بارتشن ( Sonata 45 )",
+        "subtitle": "بنك ABC — المبنى الرئيسي، التسعين الشمالي",
         "status": "done",
         "width": "normal"
       },
