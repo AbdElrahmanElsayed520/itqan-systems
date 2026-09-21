@@ -1,4 +1,4 @@
-/* ملف بيانات موقع ITQAN — آخر تحديث: ٢١‏/٩‏/٢٠٢٦، ٦:٣١:١٥ م */
+/* ملف بيانات موقع ITQAN — آخر تحديث: ٢١‏/٩‏/٢٠٢٦، ٦:٤٧:١٧ م */
 window.SITE = {
   "meta": {
     "title": "ITQAN — إتقان للألوميتال والـ UPVC والشتر",
@@ -229,9 +229,9 @@ window.SITE = {
     "ctaText": "اطلب عرض سعر لمشروعك",
     "projects": [
       {
-        "image": "images/project-01.webp",
-        "title": "مشروع جديد",
-        "subtitle": "وصف المشروع",
+        "image": "images/img-1790005546565.jpg",
+        "title": "PS كبير",
+        "subtitle": "Aqua Marina - شرم الشيخ",
         "status": "done",
         "width": "normal"
       },
@@ -348,13 +348,6 @@ window.SITE = {
         "width": "normal"
       },
       {
-        "image": "images/project-17.webp",
-        "title": "100 Jumbo ",
-        "subtitle": "Golf City — العبور",
-        "status": "done",
-        "width": "normal"
-      },
-      {
         "image": "images/project-14.webp",
         "title": "Tango Plus / Shutter ",
         "subtitle": "Swan Lake Residence – New Cairo",
@@ -372,6 +365,13 @@ window.SITE = {
         "image": "images/project-16.webp",
         "title": "Tango Plus",
         "subtitle": "Swan Lake Residence – New Cairo",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-17.webp",
+        "title": "100 Jumbo ",
+        "subtitle": "Golf City — العبور",
         "status": "done",
         "width": "normal"
       },
