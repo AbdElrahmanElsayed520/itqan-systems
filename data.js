@@ -1,4 +1,4 @@
-/* ملف بيانات موقع ITQAN — آخر تحديث: ٢١‏/٩‏/٢٠٢٦، ٤:٥٢:١٨ م */
+/* ملف بيانات موقع ITQAN — آخر تحديث: ٢١‏/٩‏/٢٠٢٦، ٥:١٤:٥٧ م */
 window.SITE = {
   "meta": {
     "title": "ITQAN — إتقان للألوميتال والـ UPVC والشتر",
@@ -230,45 +230,38 @@ window.SITE = {
     "projects": [
       {
         "image": "images/img-1789998607669.jpg",
-        "title": "Aqua Marina",
-        "subtitle": "قرى سياحية - شرم الشيخ",
+        "title": "PS كبير",
+        "subtitle": "Aqua Marina - شرم الشيخ",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/project-01.webp",
-        "title": "مشروع جديد",
-        "subtitle": "وصف المشروع",
+        "title": "Sonata 45",
+        "subtitle": " المنطقة الصناعية، العاشر من رمضان ( مصنع موسى )",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/img-1789931237718.jpg",
-        "title": "المعادي ",
-        "subtitle": "UPVC - Kompen",
+        "title": "UPVC ( Kompen )",
+        "subtitle": "المعادي ",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/img-1789930214197.jpg",
-        "title": "المقطم",
-        "subtitle": "شباك UPVC قطاع Kompen",
+        "title": "UPVC ( Kraft Line )",
+        "subtitle": "المقطم",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/project-01.webp",
-        "title": "مصنع موسى للكابات",
-        "subtitle": "واجهة ألوميتال وزجاج — المنطقة الصناعية، العاشر من رمضان",
+        "title": "مصنع موسى ",
+        "subtitle": " المنطقة الصناعية، العاشر من رمضان",
         "status": "done",
         "width": "wide"
-      },
-      {
-        "image": "images/project-02.webp",
-        "title": "مصنع موسى للكابات",
-        "subtitle": "واجهة زاوية — ألوميتال وزجاج",
-        "status": "done",
-        "width": "normal"
       },
       {
         "image": "images/project-03.webp",
@@ -279,8 +272,8 @@ window.SITE = {
       },
       {
         "image": "images/project-04.jpg",
-        "title": "بنك ABC — فرع الأقصر",
-        "subtitle": "واجهة ألوميتال وزجاج هيكلي",
+        "title": "واجهة استراكشر ( Panorama 52 )",
+        "subtitle": "بنك ABC — فرع الأقصر",
         "status": "progress",
         "width": "wide"
       },
@@ -293,15 +286,15 @@ window.SITE = {
       },
       {
         "image": "images/project-06.webp",
-        "title": "بنك ABC — المبنى الرئيسي",
-        "subtitle": "التسعين الشمالي، التجمع الخامس",
+        "title": "قواطيع ( Sonata 45 ) ",
+        "subtitle": "بنك ABC — المبنى الرئيسي، التسعين الشمالي",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/project-07.webp",
-        "title": "بنك ABC — المبنى الرئيسي",
-        "subtitle": "قواطع وأبواب زجاجية ألوميتال للمكاتب",
+        "title": "قواطيع ( Sonata 45 ) ",
+        "subtitle": "بنك ABC — المبنى الرئيسي",
         "status": "done",
         "width": "wide"
       },
@@ -328,70 +321,70 @@ window.SITE = {
       },
       {
         "image": "images/project-11.webp",
-        "title": "بنك ABC — المبنى الرئيسي",
-        "subtitle": "ممر مكتبي بقواطع زجاجية",
+        "title": "قواطيع ( Sonata 45 )",
+        "subtitle": "بنك ABC — المبنى الرئيسي",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/project-12.webp",
-        "title": "فيلا Golf City — العبور",
-        "subtitle": "شبابيك ألوميتال داخلية",
+        "title": "Jumbo 100",
+        "subtitle": "Golf City — العبور",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/project-13.jpg",
-        "title": "فيلا Golf City — العبور",
-        "subtitle": "أنظمة الشتر",
+        "title": "Shutter ",
+        "subtitle": "Golf City — العبور",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/project-14.webp",
-        "title": "فيلا Swan Lake Residence",
-        "subtitle": "واجهة خارجية",
+        "title": "Tango Plus / Shutter ",
+        "subtitle": "Swan Lake Residence – New Cairo",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/project-15.jpg",
-        "title": "فيلا Swan Lake Residence",
-        "subtitle": "شبابيك وأبواب وشتر ألوميتال",
+        "title": "Tango Plus / Shutter ",
+        "subtitle": "Swan Lake Residence – New Cairo",
         "status": "done",
         "width": "wide"
       },
       {
         "image": "images/project-16.webp",
-        "title": "Swan Lake — من الداخل",
-        "subtitle": "شبابيك سحاب ألوميتال مع شتر",
+        "title": "Tango Plus",
+        "subtitle": "Swan Lake Residence – New Cairo",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/project-17.webp",
-        "title": "فيلا Golf City — العبور",
-        "subtitle": "شبابيك ألوميتال — إضاءة مسائية",
+        "title": "100 Jumbo ",
+        "subtitle": "Golf City — العبور",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/project-18.webp",
-        "title": "الشروق 2",
-        "subtitle": "شبابيك UPVC — تشطيب داخلي كامل",
+        "title": "UPVC ( Kompen )",
+        "subtitle": "الشروق 2",
         "status": "done",
         "width": "wide"
       },
       {
         "image": "images/project-19.webp",
-        "title": "شباك سحاب UPVC",
+        "title": " ( Kompen ) UPVC",
         "subtitle": "الشروق 2",
         "status": "done",
         "width": "normal"
       },
       {
         "image": "images/project-20.webp",
-        "title": "باب سحاب UPVC زجاجي",
+        "title": "( Kompen ) UPVC ",
         "subtitle": "الشروق 2",
         "status": "done",
         "width": "normal"
