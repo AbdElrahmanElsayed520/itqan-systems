@@ -1,4 +1,4 @@
-/* ملف بيانات موقع ITQAN — آخر تحديث: ٢٠‏/٩‏/٢٠٢٦، ١٠:٣٣:٢٨ م */
+/* ملف بيانات موقع ITQAN — آخر تحديث: ٢١‏/٩‏/٢٠٢٦، ٤:٥١:١١ م */
 window.SITE = {
   "meta": {
     "title": "ITQAN — إتقان للألوميتال والـ UPVC والشتر",
@@ -228,6 +228,20 @@ window.SITE = {
     "subtitle": "مشاريع حقيقية نفتخر بتنفيذها — من فروع بنك ABC إلى الفيلات والمجمعات السكنية والتجارية.",
     "ctaText": "اطلب عرض سعر لمشروعك",
     "projects": [
+      {
+        "image": "images/img-1789998607669.jpg",
+        "title": "Aqua Marina",
+        "subtitle": "قرى سياحية",
+        "status": "done",
+        "width": "normal"
+      },
+      {
+        "image": "images/project-01.webp",
+        "title": "مشروع جديد",
+        "subtitle": "وصف المشروع",
+        "status": "done",
+        "width": "normal"
+      },
       {
         "image": "images/img-1789931237718.jpg",
         "title": "المعادي ",
