@@ -1,4 +1,4 @@
-/* ملف بيانات موقع ITQAN — آخر تحديث: ٢١‏/٩‏/٢٠٢٦، ٤:٥١:١١ م */
+/* ملف بيانات موقع ITQAN — آخر تحديث: ٢١‏/٩‏/٢٠٢٦، ٤:٥٢:١٨ م */
 window.SITE = {
   "meta": {
     "title": "ITQAN — إتقان للألوميتال والـ UPVC والشتر",
@@ -231,7 +231,7 @@ window.SITE = {
       {
         "image": "images/img-1789998607669.jpg",
         "title": "Aqua Marina",
-        "subtitle": "قرى سياحية",
+        "subtitle": "قرى سياحية - شرم الشيخ",
         "status": "done",
         "width": "normal"
       },
