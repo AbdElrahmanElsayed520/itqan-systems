@@ -1,4 +1,4 @@
-/* ملف بيانات موقع ITQAN — آخر تحديث: ١٠‏/١١‏/٢٠٢٦، ٣:٠١:٥١ م */
+/* ملف بيانات موقع ITQAN — آخر تحديث: ١٠‏/١١‏/٢٠٢٦، ٣:٠٣:٥٤ م */
 window.SITE = {
   "meta": {
     "title": "ITQAN — إتقان للألوميتال والـ UPVC والشتر",
@@ -229,7 +229,7 @@ window.SITE = {
     "ctaText": "اطلب عرض سعر لمشروعك",
     "projects": [
       {
-        "image": "images/img-1794311387542.jpg",
+        "image": "images/img-1794315828563.jpg",
         "title": "Jumbo 100",
         "subtitle": "بيت الوطن — التجمع الخامس",
         "status": "done",
